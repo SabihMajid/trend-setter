@@ -1,0 +1,217 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Sustainable Design System for Trend Setterzs
+Modern, eco-friendly color palette with sustainable greens, ocean blues, and earth neutrals
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Base Colors - Clean whites and soft backgrounds */
+    --background: 210 17% 98%;
+    --foreground: 210 40% 8%;
+
+    /* Card and surface colors */
+    --card: 0 0% 100%;
+    --card-foreground: 210 40% 8%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 210 40% 8%;
+
+    /* Primary - Sustainable Green */
+    --primary: 160 84% 39%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 160 84% 50%;
+
+    /* Secondary - Ocean Blue */
+    --secondary: 217 91% 60%;
+    --secondary-foreground: 0 0% 100%;
+
+    /* Muted colors */
+    --muted: 210 17% 96%;
+    --muted-foreground: 210 7% 46%;
+
+    /* Accent - Sustainable Teal */
+    --accent: 180 84% 47%;
+    --accent-foreground: 0 0% 100%;
+
+    /* Earth tone */
+    --earth: 25 31% 53%;
+    --earth-foreground: 0 0% 100%;
+
+    /* Status colors */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+
+    /* UI elements */
+    --border: 210 17% 89%;
+    --input: 210 17% 96%;
+    --ring: 160 84% 39%;
+
+    --radius: 0.75rem;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
+    --gradient-secondary: linear-gradient(135deg, hsl(var(--secondary)), hsl(var(--accent)));
+    --gradient-hero: linear-gradient(135deg, hsl(var(--primary) / 0.95), hsl(var(--secondary) / 0.95));
+    --gradient-subtle: linear-gradient(180deg, hsl(var(--background)), hsl(var(--muted)));
+
+    /* Shadows */
+    --shadow-elegant: 0 10px 30px -10px hsl(var(--primary) / 0.3);
+    --shadow-soft: 0 4px 20px -4px hsl(var(--foreground) / 0.1);
+    --shadow-glow: 0 0 40px hsl(var(--primary-glow) / 0.4);
+
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-spring: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    /* Dark mode with sustainable colors */
+    --background: 210 40% 8%;
+    --foreground: 210 17% 98%;
+
+    --card: 210 40% 10%;
+    --card-foreground: 210 17% 98%;
+
+    --popover: 210 40% 10%;
+    --popover-foreground: 210 17% 98%;
+
+    --primary: 160 84% 50%;
+    --primary-foreground: 210 40% 8%;
+    --primary-glow: 160 84% 60%;
+
+    --secondary: 217 91% 70%;
+    --secondary-foreground: 210 40% 8%;
+
+    --muted: 210 40% 12%;
+    --muted-foreground: 210 7% 56%;
+
+    --accent: 180 84% 57%;
+    --accent-foreground: 210 40% 8%;
+
+    --earth: 25 31% 63%;
+    --earth-foreground: 210 40% 8%;
+
+    --destructive: 0 84% 70%;
+    --destructive-foreground: 210 40% 8%;
+
+    --success: 142 76% 46%;
+    --success-foreground: 210 40% 8%;
+
+    --warning: 38 92% 60%;
+    --warning-foreground: 210 40% 8%;
+
+    --border: 210 40% 18%;
+    --input: 210 40% 12%;
+    --ring: 160 84% 50%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+}
+
+@layer components {
+  /* Modern gradient backgrounds */
+  .gradient-primary {
+    background: var(--gradient-primary);
+  }
+  
+  .gradient-secondary {
+    background: var(--gradient-secondary);
+  }
+  
+  .gradient-hero {
+    background: var(--gradient-hero);
+  }
+  
+  .gradient-subtle {
+    background: var(--gradient-subtle);
+  }
+
+  /* Glass effect for modern cards */
+  .glass-effect {
+    backdrop-filter: blur(10px);
+    background: hsl(var(--card) / 0.8);
+    border: 1px solid hsl(var(--border) / 0.5);
+  }
+
+  /* Hover animations */
+  .hover-lift {
+    transition: var(--transition-smooth);
+  }
+  
+  .hover-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-elegant);
+  }
+
+  /* Text gradient effects */
+  .text-gradient-primary {
+    background: var(--gradient-primary);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Custom shadows */
+  .shadow-elegant {
+    box-shadow: var(--shadow-elegant);
+  }
+  
+  .shadow-soft {
+    box-shadow: var(--shadow-soft);
+  }
+  
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
+  }
+
+  /* Section spacing */
+  .section-padding {
+    padding: 6rem 0;
+  }
+  
+  .section-padding-sm {
+    padding: 4rem 0;
+  }
+}
