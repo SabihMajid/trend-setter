@@ -25,9 +25,11 @@ import product17 from "@/assets/product-17.png";
 import product18 from "@/assets/product-18.png";
 import product19 from "@/assets/product-19.png";
 import product20 from "@/assets/product-20.png";
+import { useTranslation } from "react-i18next";
 
 const HeroSection = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const { t } = useTranslation();
 
   const products = [
     { id: 1,  image: product1 },
@@ -100,11 +102,11 @@ const HeroSection = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            Your Trusted{" "}
+            {t("heroTitle").split(" ").slice(0, 2).join(" ")}{" "}
             <span className="bg-gradient-to-r from-white to-white bg-clip-text text-transparent">
-              Sourcing Partner
+              {t("heroTitle").split(" ").slice(2, 4).join(" ")}
             </span>{" "}
-            of Choice
+            {t("heroTitle").split(" ").slice(4).join(" ")}
           </motion.h1>
 
           <motion.p
@@ -113,8 +115,7 @@ const HeroSection = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            A global leader in apparel sourcing and supply chain management,
-            committed to sustainable fashion and ethical manufacturing practices.
+            {t("heroSubtitle")}
           </motion.p>
 
           <motion.div
@@ -129,7 +130,7 @@ const HeroSection = () => {
               className="border-white text-white hover:bg-white hover:text-black"
               onClick={() => scrollToSection("#about")}
             >
-              Learn More
+              {t("learnMore")}
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
             <Button
@@ -138,7 +139,7 @@ const HeroSection = () => {
               className="border-white text-white hover:bg-white hover:text-black"
               onClick={() => scrollToSection("#contact")}
             >
-              Contact Us
+              {t("contactUs")}
             </Button>
           </motion.div>
 
@@ -150,15 +151,15 @@ const HeroSection = () => {
           >
             <div className="text-center">
               <div className="text-4xl font-bold text-white">14+</div>
-              <div className="text-white/80">Years Experience</div>
+              <div className="text-white/80">{t("yearsExperience")}</div>
             </div>
             <div className="text-center">
               <div className="text-4xl font-bold text-white">50+</div>
-              <div className="text-white/80">Global Partners</div>
+              <div className="text-white/80">{t("globalPartners")}</div>
             </div>
             <div className="text-center">
               <div className="text-4xl font-bold text-white">1000+</div>
-              <div className="text-white/80">Products Delivered</div>
+              <div className="text-white/80">{t("productsDelivered")}</div>
             </div>
           </motion.div>
         </motion.div>

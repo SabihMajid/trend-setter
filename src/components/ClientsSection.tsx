@@ -3,9 +3,11 @@
 import { motion } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
 import { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 
 const ClientsSection = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const { t } = useTranslation();
 
   // Using placeholder client logos - in real implementation these would be actual client logos
   const clients = [
@@ -37,17 +39,16 @@ const ClientsSection = () => {
           transition={{ duration: 0.6 }}
         >
           <Badge variant="secondary" className="mb-4">
-            Our Clients
+            {t("ourClients")}
           </Badge>
           <h2 className="text-4xl lg:text-5xl font-heading font-bold text-foreground mb-6">
-            Trusted by{" "}
+            {t("clientsTitle").split("Global Brands")[0]}{" "}
             <span className="text-gradient-primary bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
               Global Brands
             </span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            We're proud to partner with leading fashion and retail brands worldwide, 
-            delivering excellence in every project.
+            {t("clientsDescription")}
           </p>
         </motion.div>
 

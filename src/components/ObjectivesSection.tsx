@@ -4,28 +4,31 @@ import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Heart, RefreshCw, Leaf } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 const ObjectivesSection = () => {
+  const { t } = useTranslation();
+
   const objectives = [
     {
       number: "1",
       icon: Heart,
-      title: "POSITIVE IMPACT",
-      description: "We see ourselves as the extended arm, ear and eye of our customer.",
+      title: t("positiveImpact"),
+      description: t("positiveImpactDesc"),
       gradient: "from-primary to-primary-glow",
     },
     {
       number: "2", 
       icon: RefreshCw,
-      title: "REUSE, RECYCLE, REBORN",
-      description: "Trendsetterzs is passionate about using technology to create sustainable fabrics.",
+      title: t("reuseRecycleReborn"),
+      description: t("reuseRecycleRebornDesc"),
       gradient: "from-accent to-secondary",
     },
     {
       number: "3",
       icon: Leaf,
-      title: "SUSTAINABILITY",
-      description: "Trendsetterzs is committed to ethical, compliant and sustainable sourcing in every aspect of our operations and supply chain management.",
+      title: t("sustainabilityObjective"),
+      description: t("sustainabilityObjectiveDesc"),
       gradient: "from-success to-primary",
     },
   ];
@@ -41,18 +44,16 @@ const ObjectivesSection = () => {
           transition={{ duration: 0.6 }}
         >
           <Badge variant="secondary" className="mb-4">
-            Ethics
+            {t("ethics")}
           </Badge>
           <h2 className="text-4xl lg:text-5xl font-heading font-bold text-foreground mb-6">
-            OBJECTIVES AND{" "}
+            {t("objectivesTitle").split(" AND ")[0]} AND{" "}
             <span className="text-gradient-primary bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-              PRACTICES
+              {t("objectivesTitle").split(" AND ")[1]}
             </span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            We deliver our best efforts that all business objectives and practices are aligned 
-            to create a positive impact for your world-wide supply chain, the surrounding 
-            environment and for you.
+            {t("objectivesDescription")}
           </p>
         </motion.div>
 

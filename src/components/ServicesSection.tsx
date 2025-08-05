@@ -5,39 +5,42 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Search, Palette, Cog, HeadphonesIcon } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 const ServicesSection = () => {
+  const { t } = useTranslation();
+
   const services = [
     {
       id: "research",
-      title: "Research & Development",
+      title: t("researchDevelopment"),
       icon: Search,
-      subtitle: "RESEARCH & DEVELOPMENT",
-      description: "In Trend Setterzs, we believe that Research & Development is the foundation of any collection. Our R&D teams in different locations source and develop the latest fabrics, finishes and washes ahead of the market. The team works closely with our extensive network of mills in order to provide customers with quality products in their desired price.",
-      development: "Our Technical Support Teams ensure that samples are created and developed safely according to customers' product required specification.",
+      subtitle: t("researchDevelopmentSubtitle"),
+      description: t("researchDevelopmentDesc"),
+      development: t("researchDevelopmentTech"),
     },
     {
       id: "design", 
-      title: "Design",
+      title: t("design"),
       icon: Palette,
-      subtitle: "DESIGN STUDIO",
-      description: "Our team of designers travel around the world to look for design inspirations and novel ideas that breathe new designs to our customers specification. We add value to our customers' inhouse design teams and enhance their product while keeping true to their brand identity.",
+      subtitle: t("designSubtitle"),
+      description: t("designDesc"),
     },
     {
       id: "production",
-      title: "Production",
+      title: t("production"),
       icon: Cog,
-      subtitle: "SOURCING & PRODUCTION CONTROL",
-      sourcing: "Our presence in Asia enables us to manage our manufacturing operations effectively.",
-      production: "We have experienced technical experts on-site who monitor and control the quality at our factories.",
-      quality: "With our experienced and skilled on-site Quality Control teams, we can provide our partners with the transparency and controls needed to measure the quality of each order.",
+      subtitle: t("productionSubtitle"),
+      sourcing: t("productionSourcing"),
+      production: t("productionControl"),
+      quality: t("productionQuality"),
     },
     {
       id: "operations",
-      title: "Operations Support",
+      title: t("operationsSupport"),
       icon: HeadphonesIcon,
-      subtitle: "OPERATIONS EXCELLENCE",
-      description: "In Trend Setterzs, these teams collaborate with their counterparts to ensure that operations are carried out smoothly and with efficiency across the supply chain.",
+      subtitle: t("operationsSupportSubtitle"),
+      description: t("operationsSupportDesc"),
     },
   ];
 
@@ -52,18 +55,16 @@ const ServicesSection = () => {
           transition={{ duration: 0.6 }}
         >
           <Badge variant="secondary" className="mb-4">
-            Our Services
+            {t("servicesBadge")}
           </Badge>
           <h2 className="text-4xl lg:text-5xl font-heading font-bold text-foreground mb-6">
-            THE FOUNDATION OF ANY{" "}
+            {t("servicesTitle").split(" ").slice(0, -1).join(" ")}{" "}
             <span className="text-gradient-primary bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-              COLLECTION
+              {t("servicesTitle").split(" ").slice(-1)[0]}
             </span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            The company's services are engaged in offering sourcing in apparel, home textiles, 
-            fashion accessories, footwear, decorative accessories and other goods, enabling clients 
-            to get access to quality supply chain management services.
+            {t("servicesDescription")}
           </p>
         </motion.div>
 
@@ -121,15 +122,15 @@ const ServicesSection = () => {
                     {service.sourcing && (
                       <div className="grid md:grid-cols-3 gap-6">
                         <div className="bg-primary/10 p-6 rounded-lg">
-                          <h4 className="font-semibold text-primary mb-2">SOURCING</h4>
+                          <h4 className="font-semibold text-primary mb-2">{t("productionSubtitle").split(" ")[0]}</h4>
                           <p className="text-foreground">{service.sourcing}</p>
                         </div>
                         <div className="bg-accent/10 p-6 rounded-lg">
-                          <h4 className="font-semibold text-accent mb-2">PRODUCTION CONTROL</h4>
+                          <h4 className="font-semibold text-accent mb-2">{t("productionSubtitle").split(" ").slice(2).join(" ")}</h4>
                           <p className="text-foreground">{service.production}</p>
                         </div>
                         <div className="bg-success/10 p-6 rounded-lg">
-                          <h4 className="font-semibold text-success mb-2">QUALITY</h4>
+                          <h4 className="font-semibold text-success mb-2">{t("qualityAssurance").split(" ")[0]}</h4>
                           <p className="text-foreground">{service.quality}</p>
                         </div>
                       </div>

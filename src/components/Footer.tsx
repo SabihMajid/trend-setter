@@ -3,8 +3,11 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Mail, Phone, MapPin, Linkedin, Twitter, Facebook } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 const Footer = () => {
+  const { t } = useTranslation();
+
   const socialLinks = [
     { icon: Linkedin, href: "#", label: "LinkedIn" },
     { icon: Twitter, href: "#", label: "Twitter" },
@@ -35,12 +38,11 @@ const Footer = () => {
                 <h3 className="font-heading font-bold text-xl text-background">
                   TREND SETTERZS
                 </h3>
-                <p className="text-xs text-background/70">Sustainable Sourcing</p>
+                <p className="text-xs text-background/70">{t("sustainableSourcing")}</p>
               </div>
             </div>
             <p className="text-background/80 leading-relaxed mb-6 max-w-md">
-              A global leader in apparel sourcing and supply chain management, 
-              committed to sustainable fashion and ethical manufacturing practices.
+              {t("footerDescription")}
             </p>
             <div className="flex space-x-4">
               {socialLinks.map((social, index) => (
@@ -65,14 +67,14 @@ const Footer = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            <h4 className="font-semibold text-background mb-6">Quick Links</h4>
+            <h4 className="font-semibold text-background mb-6">{t("quickLinks")}</h4>
             <ul className="space-y-3">
               {[
-                { name: "About", href: "#about" },
-                { name: "Services", href: "#services" },
-                { name: "Objectives", href: "#objectives" },
-                { name: "Clients", href: "#clients" },
-                { name: "Contact", href: "#contact" },
+                { name: t("about"), href: "#about" },
+                { name: t("services"), href: "#services" },
+                { name: t("objectives"), href: "#objectives" },
+                { name: t("clients"), href: "#clients" },
+                { name: t("contact"), href: "#contact" },
               ].map((link, index) => (
                 <li key={index}>
                   <button
@@ -96,12 +98,12 @@ const Footer = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <h4 className="font-semibold text-background mb-6">Contact Info</h4>
+            <h4 className="font-semibold text-background mb-6">{t("contactInfo")}</h4>
             <div className="space-y-4">
               <div className="flex items-start gap-3">
                 <Mail className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
                 <div>
-                  <p className="text-background/70">Email</p>
+                  <p className="text-background/70">{t("email")}</p>
                   <a 
                     href="mailto:Nabeel@Trendsetterzs.com"
                     className="text-background hover:text-primary transition-colors"
@@ -113,7 +115,7 @@ const Footer = () => {
               <div className="flex items-start gap-3">
                 <Phone className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
                 <div>
-                  <p className="text-background/70">Phone</p>
+                  <p className="text-background/70">{t("callUs")}</p>
                   <a 
                     href="tel:+923452612998"
                     className="text-background hover:text-primary transition-colors"
@@ -125,12 +127,14 @@ const Footer = () => {
               <div className="flex items-start gap-3">
                 <MapPin className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
                 <div>
-                  <p className="text-background/70">Address</p>
+                  <p className="text-background/70">{t("address")}</p>
                   <p className="text-background/80 text-sm leading-relaxed">
-                    Office # B-1 Second Floor<br />
-                    Suleman Loudge Building<br />
-                    Gulshan-E-Iqbal 13-B<br />
-                    Karachi, Pakistan
+                    {t("fullAddress").split(", ").map((line, index) => (
+                      <span key={index}>
+                        {line}
+                        {index < t("fullAddress").split(", ").length - 1 && <br />}
+                      </span>
+                    ))}
                   </p>
                 </div>
               </div>
@@ -147,7 +151,7 @@ const Footer = () => {
           transition={{ duration: 0.6, delay: 0.3 }}
         >
           <p className="text-background/60 text-sm mb-4 md:mb-0">
-            © {new Date().getFullYear()} Trend Setterzs. All rights reserved.
+            © {new Date().getFullYear()} Trend Setterzs. {t("allRightsReserved")}
           </p>
           <Button
             onClick={scrollToTop}
@@ -155,7 +159,7 @@ const Footer = () => {
             size="sm"
             className="border-background/30 text-background hover:bg-background hover:text-foreground transition-colors"
           >
-            Back to Top
+            {t("backToTop")}
           </Button>
         </motion.div>
       </div>

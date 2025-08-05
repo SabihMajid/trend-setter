@@ -4,28 +4,31 @@ import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Globe, Users, Award, Leaf } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 const AboutSection = () => {
+  const { t } = useTranslation();
+
   const features = [
     {
       icon: Globe,
-      title: "Global Presence",
-      description: "Extensive network across Asia and key manufacturing regions",
+      title: t("globalPresence"),
+      description: t("globalPresenceDesc"),
     },
     {
       icon: Users,
-      title: "Expert Team",
-      description: "On-site inspection agents and international trade specialists",
+      title: t("expertTeam"),
+      description: t("expertTeamDesc"),
     },
     {
       icon: Award,
-      title: "Quality Assurance",
-      description: "High production standards through rigorous quality control",
+      title: t("qualityAssurance"),
+      description: t("qualityAssuranceDesc"),
     },
     {
       icon: Leaf,
-      title: "Sustainability",
-      description: "Committed to eco-friendly and ethical sourcing practices",
+      title: t("sustainability"),
+      description: t("sustainabilityDesc"),
     },
   ];
 
@@ -40,14 +43,16 @@ const AboutSection = () => {
           transition={{ duration: 0.6 }}
         >
           <Badge variant="secondary" className="mb-4">
-            About Us
+            {t("aboutBadge")}
           </Badge>
-          <h2 className="text-4xl lg:text-5xl font-heading font-bold text-foreground mb-6">
-            Your Trusted Sourcing Partner Of{" "}
-            <span className="text-gradient-primary bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-              Choice
-            </span>
-          </h2>
+          <h2 className="text-4xl lg:text-5xl font-heading font-bold text-foreground mb-6"
+              dangerouslySetInnerHTML={{
+                __html: t("aboutTitle").replace(
+                  /Choice/g,
+                  '<span class="text-gradient-primary bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Choice</span>'
+                )
+              }}
+          />
         </motion.div>
 
         <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
@@ -60,28 +65,22 @@ const AboutSection = () => {
             transition={{ duration: 0.8 }}
           >
             <blockquote className="text-xl lg:text-2xl italic text-muted-foreground border-l-4 border-primary pl-6">
-              "Trend Setterzs is an established global supply chain manager and a
-              sustainable virtual manufacturing group with razor-sharp focus on
-              products and prices."
+              "{t("aboutQuote")}"
             </blockquote>
 
             <p className="text-lg leading-relaxed text-foreground">
-              We provide sustainable sourcing for the fashion and hospitality
-              industry. Our solid relationships with manufacturers and quality
-              suppliers around the globe ensures that we maintain high production
-              standards through our team of on-site inspection agents and
-              international trade specialists.
+              {t("aboutDescription")}
             </p>
 
             <div className="flex flex-wrap gap-4">
               <Badge variant="outline" className="text-primary border-primary">
-                14+ Years Experience
+                14+ {t("yearsExperience")}
               </Badge>
               <Badge variant="outline" className="text-accent border-accent">
-                Global Network
+                {t("globalPresence")}
               </Badge>
               <Badge variant="outline" className="text-success border-success">
-                Sustainable Focus
+                {t("sustainability")}
               </Badge>
             </div>
           </motion.div>
@@ -123,18 +122,18 @@ const AboutSection = () => {
           {[
             {
               number: "14+",
-              label: "Years of Experience",
-              description: "Proven track record in global sourcing",
+              label: t("yearsExperience"),
+              description: t("provenTrackRecord"),
             },
             {
               number: "50+",
-              label: "Manufacturing Partners",
-              description: "Trusted relationships worldwide",
+              label: t("manufacturingPartners"),
+              description: t("manufacturingPartnersDesc"),
             },
             {
               number: "1000+",
-              label: "Successful Projects",
-              description: "Delivered with excellence",
+              label: t("successfulProjects"),
+              description: t("successfulProjectsDesc"),
             },
           ].map((stat, index) => (
             <motion.div

@@ -8,8 +8,11 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { MapPin, Phone, Mail, Send } from "lucide-react";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 const ContactSection = () => {
+  const { t } = useTranslation();
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -33,22 +36,22 @@ const ContactSection = () => {
   const contactInfo = [
     {
       icon: Mail,
-      title: "Email Us",
+      title: t("emailUs"),
       content: "Nabeel@Trendsetterzs.Com",
       action: "mailto:Nabeel@Trendsetterzs.com",
       gradient: "from-primary to-primary-glow",
     },
     {
       icon: Phone,
-      title: "Call Us",
+      title: t("callUs"),
       content: "+92-345-2612998",
       action: "tel:+923452612998",
       gradient: "from-accent to-secondary",
     },
     {
       icon: MapPin,
-      title: "Visit Us",
-      content: "Office # B-1 Second Floor, Suleman Loudge Building Gulshan-E-Iqbal 13-B Karachi, Pakistan",
+      title: t("visitUs"),
+      content: t("fullAddress"),
       action: "#",
       gradient: "from-secondary to-accent",
     },
@@ -65,17 +68,16 @@ const ContactSection = () => {
           transition={{ duration: 0.6 }}
         >
           <Badge variant="secondary" className="mb-4">
-            Contact Us
+            {t("contactBadge")}
           </Badge>
           <h2 className="text-4xl lg:text-5xl font-heading font-bold text-foreground mb-6">
-            For Any{" "}
+            {t("contactTitle").split("Inquiry")[0]}{" "}
             <span className="text-gradient-primary bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
               Inquiry
             </span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Ready to start your next project? Get in touch with our team and let's 
-            create something amazing together.
+            {t("contactDescription")}
           </p>
         </motion.div>
 
@@ -89,9 +91,9 @@ const ContactSection = () => {
             transition={{ duration: 0.8 }}
           >
             <div>
-              <h3 className="text-2xl font-bold text-foreground mb-6">Get in Touch</h3>
+              <h3 className="text-2xl font-bold text-foreground mb-6">{t("getInTouch")}</h3>
               <p className="text-muted-foreground mb-8">
-                We'd love to hear from you. Send us a message and we'll respond as soon as possible.
+                {t("getInTouchDesc")}
               </p>
             </div>
 
@@ -134,7 +136,7 @@ const ContactSection = () => {
             <Card className="glass-effect shadow-elegant">
               <CardHeader>
                 <CardTitle className="text-2xl font-bold text-foreground">
-                  Send us a Message
+                  {t("sendMessage")}
                 </CardTitle>
               </CardHeader>
               <CardContent>
@@ -142,7 +144,7 @@ const ContactSection = () => {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                       <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
-                        Name *
+                        {t("name")} *
                       </label>
                       <Input
                         id="name"
@@ -152,12 +154,12 @@ const ContactSection = () => {
                         value={formData.name}
                         onChange={handleInputChange}
                         className="w-full"
-                        placeholder="Your full name"
+                        placeholder={t("yourFullName")}
                       />
                     </div>
                     <div>
                       <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
-                        Email *
+                        {t("email")} *
                       </label>
                       <Input
                         id="email"
@@ -167,14 +169,14 @@ const ContactSection = () => {
                         value={formData.email}
                         onChange={handleInputChange}
                         className="w-full"
-                        placeholder="your.email@example.com"
+                        placeholder={t("yourEmail")}
                       />
                     </div>
                   </div>
                   
                   <div>
                     <label htmlFor="company" className="block text-sm font-medium text-foreground mb-2">
-                      Company
+                      {t("company")}
                     </label>
                     <Input
                       id="company"
@@ -183,13 +185,13 @@ const ContactSection = () => {
                       value={formData.company}
                       onChange={handleInputChange}
                       className="w-full"
-                      placeholder="Your company name"
+                      placeholder={t("yourCompany")}
                     />
                   </div>
 
                   <div>
                     <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
-                      Message *
+                      {t("message")} *
                     </label>
                     <Textarea
                       id="message"
@@ -198,7 +200,7 @@ const ContactSection = () => {
                       value={formData.message}
                       onChange={handleInputChange}
                       className="w-full min-h-[120px]"
-                      placeholder="Tell us about your project..."
+                      placeholder={t("tellUsAboutProject")}
                     />
                   </div>
 
@@ -207,7 +209,7 @@ const ContactSection = () => {
                     className="w-full gradient-primary hover:shadow-glow transition-all duration-300"
                     size="lg"
                   >
-                    Send Message
+                    {t("sendMessageButton")}
                     <Send className="ml-2 h-5 w-5" />
                   </Button>
                 </form>

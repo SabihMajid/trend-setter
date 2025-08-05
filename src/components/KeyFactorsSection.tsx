@@ -4,25 +4,28 @@ import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Clock, DollarSign, Globe2 } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 const KeyFactorsSection = () => {
+  const { t } = useTranslation();
+
   const factors = [
     {
       icon: Clock,
-      title: "Dynamic Business Models",
-      description: "Positioned to operate on short lead times, low margins and flexible volume.",
+      title: t("dynamicBusinessModels"),
+      description: t("dynamicBusinessModelsDesc"),
       gradient: "from-primary to-primary-glow",
     },
     {
       icon: DollarSign,
-      title: "Competitive Pricing",
-      description: "Highly competitive product prices and service fees.",
+      title: t("competitivePricing"),
+      description: t("competitivePricingDesc"),
       gradient: "from-accent to-secondary",
     },
     {
       icon: Globe2,
-      title: "Global Sourcing Presence",
-      description: "Existing sourcing and production presence in key low-cost and duty-free countries of the world.",
+      title: t("globalSourcingPresence"),
+      description: t("globalSourcingPresenceDesc"),
       gradient: "from-secondary to-accent",
     },
   ];
@@ -38,14 +41,14 @@ const KeyFactorsSection = () => {
           transition={{ duration: 0.6 }}
         >
           <Badge variant="secondary" className="mb-4">
-            Why Choose Us
+            {t("whyChooseUs")}
           </Badge>
           <h2 className="text-4xl lg:text-5xl font-heading font-bold text-foreground mb-6">
-            These key factors enable us to work with{" "}
+            {t("keyFactorsTitle").split("fashion companies")[0]}{" "}
             <span className="text-gradient-primary bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
               fashion companies
             </span>{" "}
-            around the world:
+            {t("keyFactorsTitle").split("fashion companies")[1]}
           </h2>
         </motion.div>
 

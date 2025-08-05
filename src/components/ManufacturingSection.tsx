@@ -3,8 +3,11 @@
 import { motion } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
 import manufacturingBg from "@/assets/manufacturing-bg.jpg";
+import { useTranslation } from "react-i18next";
 
 const ManufacturingSection = () => {
+  const { t } = useTranslation();
+
   const standards = [
     "ISO 9001:2015 Quality Management",
     "OEKO-TEX Standard 100",
@@ -37,14 +40,14 @@ const ManufacturingSection = () => {
           transition={{ duration: 0.6 }}
         >
           <Badge variant="secondary" className="mb-4 bg-white/20 text-white border-white/30">
-            Quality Standards
+            {t("qualityStandards")}
           </Badge>
           <h2 className="text-4xl lg:text-5xl font-heading font-bold text-white mb-6">
-            OUR MANUFACTURING PARTNERS ARE COMPLIANT WITH{" "}
+            {t("manufacturingTitle").split("INTERNATIONAL STANDARDS")[0]}{" "}
             <span className="text-gradient-primary bg-gradient-to-r from-green-200 to-blue-200 bg-clip-text text-transparent">
               INTERNATIONAL STANDARDS
             </span>{" "}
-            AND CODE OF CONDUCT:
+            {t("manufacturingTitle").split("INTERNATIONAL STANDARDS")[1]}
           </h2>
         </motion.div>
 
