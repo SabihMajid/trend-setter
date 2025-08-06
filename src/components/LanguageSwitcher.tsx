@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import {
@@ -22,8 +22,22 @@ const languages = [
 const LanguageSwitcher = () => {
   const { i18n } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
+  const [currentLang, setCurrentLang] = useState(i18n.language);
 
-  const currentLanguage = languages.find(lang => lang.code === i18n.language) || languages[0];
+  // Update current language when i18n language changes
+  useEffect(() => {
+    const handleLanguageChange = (lng: string) => {
+      setCurrentLang(lng);
+    };
+
+    i18n.on('languageChanged', handleLanguageChange);
+    
+    return () => {
+      i18n.off('languageChanged', handleLanguageChange);
+    };
+  }, [i18n]);
+
+  const currentLanguage = languages.find(lang => lang.code === currentLang) || languages[0];
 
   const changeLanguage = (languageCode: string) => {
     i18n.changeLanguage(languageCode);
@@ -45,7 +59,7 @@ const LanguageSwitcher = () => {
             key={language.code}
             onClick={() => changeLanguage(language.code)}
             className={`cursor-pointer ${
-              i18n.language === language.code ? 'bg-accent' : ''
+              currentLang === language.code ? 'bg-accent' : ''
             }`}
           >
             <span className="mr-2">{language.flag}</span>
